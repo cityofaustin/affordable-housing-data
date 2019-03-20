@@ -1,34 +1,42 @@
 {
-  "name": "affordable-housing-data-hub-redo",
-  "version": "1.0.0",
-  "main": "server.js",
+  "name": "affordable-housing-express",
+  "version": "0.0.0",
+  "private": true,
+  "main": "app.js",
   "scripts": {
-    "dev": "cd backend && nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start:server": "cd backend && nodemon server.js",
-    "start:serverBabel": "cd backend && nodemon server.js --exec babel-node --presets es2015,stage-0",
-    "start:client": "cd client && yarn start",
-    "start:dev": "concurrently \"yarn start:server\" \"yarn start:client\""
+    "dev": "nodemon ./bin/www",
+    "server:dev": "nodemon ./bin/www",
+    "server": "node ./bin/www",
+    "client": "cd client && yarn start",
+    "client:build": "cd client && yarn build",
+    "start": "concurrently --kill-others-on-fail \"yarn client:build\" \"yarn server\"",
+    "start:dev": "concurrently --kill-others-on-fail \"yarn client:build\" \"yarn server:dev\"",
+    "local:production": "concurrently --kill-others-on-fail \"yarn client:build\" \"yarn server\"",
+    "client:production": "cd client && REACT_APP_API_URL= yarn build"
   },
-  "author": "Frederick Shotlow",
-  "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
-    "bcrypt": "^3.0.3",
+    "bcrypt": "^3.0.4",
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
+    "cookie-parser": "~1.4.3",
     "cors": "^2.8.5",
+    "debug": "~2.6.9",
     "dotenv": "^6.2.0",
-    "express": "^4.16.4",
+    "express": "~4.16.0",
     "express-session": "^1.15.6",
-    "fast-csv": "^2.4.1",
+    "moment": "^2.24.0",
+    "morgan": "~1.9.0",
     "mysql": "^2.16.0",
-    "mysql2": "^1.6.4",
-    "sequelize": "^4.42.0",
+    "mysql2": "^1.6.5",
+    "react-bootstrap": "^1.0.0-beta.5",
+    "react-toastify": "^4.5.2",
+    "sequelize": "^4.43.0",
     "underscore": "^1.9.1",
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.10"
   }
 }
