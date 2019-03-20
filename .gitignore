@@ -14,6 +14,8 @@ config_path.txt
 /sample_config
 /sql
 
+
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
