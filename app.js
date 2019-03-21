@@ -18,11 +18,13 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// app.use(express.static(path.join(__dirname, '../client/build')));
-app.use(express.static('client/build'))
+if (process.env.NODE_ENV == 'Production') {
+    // serve the react app file
+    app.use(express.static(`${__dirname}/client/build`))
+    //app.use(express.static('client/build'))
+}
 
 // app.use(cookieParser());
-//app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
