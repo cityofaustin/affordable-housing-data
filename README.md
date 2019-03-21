@@ -35,7 +35,5 @@ AffordableHousingDataHub uses node.js on the backend and react.js for the front 
 `npm install -g concurrently`
 
 2. For Development
-    a. start server first with `npm/yarn server:dev`
-    b. start client with `npm/yarn client`
-    c. or you can start both at same time `npm/yarn start:dev `
+  - Start server and client together by running  `npm/yarn start:dev `
     
