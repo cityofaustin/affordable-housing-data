@@ -8,10 +8,13 @@ config_path.txt
 # MISC
 .DS_Store
 .env
+.env.local
+.env.staging
+.env.production
 .vscode/*
 
 
-/sample_config
+/sample_configs
 /sql
 
 
