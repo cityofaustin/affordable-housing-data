@@ -22,10 +22,6 @@ AffordableHousingDataHub uses node.js on the backend and react.js for the front 
 
 6. create "logs" folder in root directory. add a logfile called "app.log" under the "logs" folder. error logging will be written here.
 
-
-
-
-
 ## Adding frontend client
 1. Clone client into project `git clone https://github.com/cityofaustin/affordable-housing-data-client client`
 2. make sure to update client `package.json` to have the proxy set to the url of the backend server. `eg. "proxy": "http://localhost:3001",`
