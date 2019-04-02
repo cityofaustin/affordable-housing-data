@@ -7,9 +7,10 @@
     "dev": "nodemon ./bin/www",
     "server:dev": "nodemon ./bin/www",
     "server": "node ./bin/www",
-    "client": "cd client && yarn start",
+    "client:start": "cd client && yarn start",
     "client:build": "cd client && yarn build",
-    "start": "concurrently --kill-others-on-fail \"yarn client:build\" \"yarn server\"",
+    "start": "npm server",
+    "start-practice": "concurrently --kill-others-on-fail \"yarn client:build\" \"yarn server\"",
     "start:dev": "concurrently --kill-others-on-fail \"yarn client:start\" \"yarn server:dev\"",
     "local:production": "concurrently --kill-others-on-fail \"yarn client:build\" \"yarn server\"",
     "client:production": "cd client && REACT_APP_API_URL= yarn build"
