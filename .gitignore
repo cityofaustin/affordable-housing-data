@@ -67,7 +67,7 @@ typings/
 logs/
 /public/dist/*
 /logs/*
-/client
+# /client
 
 # MISC
 .DS_Store
