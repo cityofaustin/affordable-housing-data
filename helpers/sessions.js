@@ -16,7 +16,7 @@ module.exports.initSession = function() {
     if (process.env.NODE_ENV == "production") {
         // TODO: set up https / ssl certificate
         // set secure to true on production
-        // session_opts.cookie.secure = true;
+        session_opts.cookie.secure = true;
     }
     return expressSession(sessionOpts);
 }
