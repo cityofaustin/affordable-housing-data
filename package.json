@@ -9,7 +9,7 @@
     "server": "node ./bin/www",
     "client:start": "cd client && yarn start",
     "client:build": "cd client && npm build",
-    "start": "npm server",
+    "start": "npm run server",
     "start:production": "concurrently --kill-others-on-fail \"npm run client:build\" \"npm run server\"",
     "start-practice": "concurrently --kill-others-on-fail \"yarn client:build\" \"yarn server\"",
     "start:dev": "concurrently --kill-others-on-fail \"yarn client:start\" \"yarn server:dev\"",
