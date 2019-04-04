@@ -10,6 +10,7 @@
     "client:start": "cd client && yarn start",
     "client:build": "cd client && yarn build",
     "start": "npm server",
+    "start:production": "concurrently --kill-others-on-fail \"yarn client:build\" \"yarn server\"",
     "start-practice": "concurrently --kill-others-on-fail \"yarn client:build\" \"yarn server\"",
     "start:dev": "concurrently --kill-others-on-fail \"yarn client:start\" \"yarn server:dev\"",
     "local:production": "concurrently --kill-others-on-fail \"yarn client:build\" \"yarn server\"",
