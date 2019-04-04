@@ -20,8 +20,9 @@ app.use(bodyParser.json());
 
 if (process.env.NODE_ENV == 'Production') {
     // serve the react app file
-    app.use(express.static(`${__dirname}/client/build`))
+    //app.use(express.static(`${__dirname}/client/build`))
     //app.use(express.static('client/build'))
+    app.use(express.static('client/build'))
 }
 
 // app.use(cookieParser());
