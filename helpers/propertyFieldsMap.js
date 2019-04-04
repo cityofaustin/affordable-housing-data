@@ -768,19 +768,23 @@ module.exports.fieldsMap = {
         tags: ['Tenant Criteria Info']
     },
     affordability_start: {
-        dataType: 'varchar(255)',
+        value: null,
+        dataType: 'datetime',
         group: 'Affordability Information',
         active: true,
-        editable: false,
-        name: 'Affordability Start Date'
+        editable: true,
+        name: 'Affordability Start Date',
+        description: 'Format: 2016-01-01 00:00:01'
     },
     affordability_expiration: {
-        dataType: 'varchar(255)',
+        value: null,
+        dataType: 'datetime',
         group: 'Affordability Information',
         groupOrderNum: 24,
-        editable: false,
+        editable: true,
         active: true,
-        name: 'Affordability Expiration of Property'
+        name: 'Affordability Expiration of Property',
+        description: 'Format: 2016-01-01 00:00:01'
     },
     ahi_project_id: {
         dataType: 'int(11)',
