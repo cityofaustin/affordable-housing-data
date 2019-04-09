@@ -4,13 +4,16 @@
   "private": true,
   "main": "app.js",
   "scripts": {
+    "server": "node ./bin/www",
+    "start": "npm run server",
+    
+    "client:install": "cd client && npm install",
+    "client:start": "cd client && npm start",
+    "client:build": "cd client && npm build",
+
     "dev": "nodemon ./bin/www",
     "server:dev": "nodemon ./bin/www",
-    "server": "node ./bin/www",
-    "client:start": "cd client && yarn start",
-    "client:build": "cd client && npm run build",
-    "start": "npm run server",
-    "start:production": "concurrently --kill-others-on-fail \"npm run client:build\" \"npm start\"",
+    "start:production": "concurrently --kill-others-on-fail \"npm run client:build\" \"npm run server\"",
     "start-practice": "concurrently --kill-others-on-fail \"yarn client:build\" \"yarn server\"",
     "start:dev": "concurrently --kill-others-on-fail \"yarn client:start\" \"yarn server:dev\"",
     "local:production": "concurrently --kill-others-on-fail \"yarn client:build\" \"yarn server\"",
