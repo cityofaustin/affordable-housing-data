@@ -1,0 +1,5 @@
+client/public
+client/src
+client/node_modules
+
+public/
