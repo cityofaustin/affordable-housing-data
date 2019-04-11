@@ -6,16 +6,7 @@
   "scripts": {
     "server": "node ./bin/www",
     "start": "npm run server",
-    
     "dev": "nodemon ./bin/www",
-    "client:install": "cd client && npm install",
-    "client:start": "cd client && npm start",
-    "client:build": "cd client && npm build",
-    "client:production": "cd client && REACT_APP_API_URL= npm run build",
-    "start:production": "concurrently --kill-others-on-fail \"npm run client:build\" \"npm run server\"",
-    "start-practice": "concurrently --kill-others-on-fail \"npm run client:build\" \"npm run server\"",
-    "start:dev": "concurrently --kill-others-on-fail \"npm run client:start\" \"npm run dev\"",
-    "local:production": "concurrently --kill-others-on-fail \"npm run client:build\" \"npm run server\""
   },
   "dependencies": {
     "axios": "^0.18.0",
