@@ -6,7 +6,7 @@
   "scripts": {
     "server": "node ./bin/www",
     "start": "npm run server",
-    "dev": "nodemon ./bin/www",
+    "dev": "nodemon ./bin/www"
   },
   "dependencies": {
     "axios": "^0.18.0",
