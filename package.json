@@ -5,13 +5,13 @@
   "main": "app.js",
   "scripts": {
     "server": "node ./bin/www",
-    "start": "npm run bcrypt && npm run server",
+    "start": "npm run server",
     "dev": "nodemon ./bin/www",
     "bcrypt": "npm install bcrypt"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "bcrypt": "^3.0.4",
+    "bcrypt": "^3.0.5",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
@@ -20,6 +20,7 @@
     "debug": "~2.6.9",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "express-mysql-session": "^2.1.0",
     "express-session": "^1.15.6",
     "moment": "^2.24.0",
     "morgan": "~1.9.0",
