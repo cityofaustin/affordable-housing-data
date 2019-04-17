@@ -4,7 +4,7 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "npm run server",
+    "start": "npm rebuild bcrypt --build-from-source && npm run server",
     "server": "node ./bin/www",
     "rebuild": "npm rebuild bcrypt --build-from-source && npm run server",
     "dev": "NODE_EN=development nodemon ./bin/www",
