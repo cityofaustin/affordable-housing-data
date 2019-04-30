@@ -169,11 +169,13 @@ router.post('/login', async (req, res) => {
         var user = result[0];
         if (user) {
             // set this session id in the user's table, and then for all the other pages (like update_properties) we need to check that the session is the same, and if it is, then we want to allow them, but if not, then we want to send back a redirect option, and then take them back to the login page to login
+            var userdata = await dbHelper.getUser(email);
+            var isuseradmin = userdata[0]
             await dbHelper.updateSessionId(user.id, req.sessionID);
 
             //console.log(user)
             // console.log('login posted');
-            res.status(200).send({success: true});
+            res.status(200).send({success: true, is_admin: isuseradmin.admin_flag});
         } else {
             res.status(200).send({success: false});
         }

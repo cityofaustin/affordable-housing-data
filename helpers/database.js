@@ -26,19 +26,19 @@ async function updateData(updateDataObj, propertyId, user_id) {
 			// update PropertyVerifications
 			if (!(verify == undefined)) {
 				var verifyExists = await query(
-					process.env.DB_NAME, //TODO: add env variable for db_name
+					process.env.DB_NAME, 
 					`SELECT id from PropertyVerifications WHERE field = '${field}' AND property_id = ${propertyId}`
 				);
 
 				if (verifyExists.length > 0) {
 					var verifyId = verifyExists[0].id;
 					await query(
-						process.env.DB_NAME, //TODO: add env variable for db_name
+						process.env.DB_NAME, 
 						`UPDATE PropertyVerifications SET verified = ${verify}, last_updated = '${moment().format('YYYY-MM-DD HH:mm:ss')}', updated_by_user_id=${mysql.escape(user_id)} WHERE id = ${verifyId}`
 					);
 				} else {
 					await query(
-						process.env.DB_NAME, //TODO: add env variable for db_name
+						process.env.DB_NAME, 
 						`INSERT INTO PropertyVerifications (verified, property_id, field, last_updated, updated_by_user_id) VALUES (${mysql.escape(verify)}, ${mysql.escape(propertyId)}, ${mysql.escape(field)}, '${moment().format('YYYY-MM-DD HH:mm:ss')}', ${mysql.escape(user_id)})`
 					);
 				}
@@ -76,7 +76,7 @@ async function updateSessionId(userId, sessionId) {
 		try {
 			var conn = await getDatabaseConnection();
 			var sql = `UPDATE Users SET session_id =${mysql.escape(sessionId)} WHERE id=${mysql.escape(userId)}`;
-			await queryDatabase(conn, process.env.DB_NAME, sql); //TODO: add env variable for db_name
+			await queryDatabase(conn, process.env.DB_NAME, sql); 
 			console.log('session id UPDATE')
 		} catch(e) {
 			error = new Error(thisFilename + ' => updateSessionID(), caught exception:\n' + e.stack);
@@ -122,7 +122,7 @@ async function doesUserExist(email, pass) {
 			var conn = await getDatabaseConnection();
 			var res = await queryDatabase(
 				conn,
-				process.env.DB_NAME, //TODO: add env variable for db_name
+				process.env.DB_NAME, 
 				`SELECT * FROM Users WHERE email=${mysql.escape(email)}`
 			);
 			if (res.length > 1) {
@@ -155,7 +155,7 @@ async function getUser(email) {
 		var conn = await getDatabaseConnection();
 		var res = await queryDatabase(
 			conn,
-			process.env.DB_NAME, //TODO: add env variable for db_name
+			process.env.DB_NAME, 
 			`SELECT * FROM Users WHERE email = ${mysql.escape(email)}`
 		);
 		await closeDatabaseConnection(conn);
@@ -176,7 +176,7 @@ async function createUser(firstName, lastName, org, email, passwd) {
 			var passwdHash = bcrypt.hashSync(passwd, 11);
 			var results = await queryDatabase(
 				conn,
-				process.env.DB_NAME, //TODO: add env variable for db_name
+				process.env.DB_NAME, 
 				`INSERT INTO Users (first_name, last_name, org, email, passwd) VALUES (${mysql.escape(firstName)}, ${mysql.escape(lastName)}, ${mysql.escape(org)}, ${mysql.escape(email)}, ${mysql.escape(passwdHash)})`
 			);
 			await closeDatabaseConnection(conn);
@@ -193,8 +193,8 @@ async function getUpdatePropertiesList() {
 	// TODO: error handling
 
 	var res = query(
-		process.env.DB_NAME, //TODO: add env variable for db_name
-		'SELECT property_name, funding_source_aahc, funding_source_hatc, funding_source_tdhca, funding_source_nhcd, data_source_ahi, data_source_tdhca, data_source_atc_guide, Properties.id, property_name, address, phone, Properties.email as email, website, city, total_income_restricted_units, total_section_8_units, zipcode, Users.email as assigned_user_email FROM Properties LEFT JOIN Users ON Properties.assigned_user_id = Users.id WHERE is_duplicate != 1 AND NOT (outside_etj <=> 1)'
+		process.env.DB_NAME, 
+		'SELECT p.id, p.property_name, funding_source_aahc, funding_source_hatc, funding_source_tdhca, funding_source_nhcd, data_source_ahi, data_source_tdhca, data_source_atc_guide,  address, phone, p.email as email, website, city, total_income_restricted_units, total_section_8_units, zipcode, u.email as assigned_user_email FROM Properties p LEFT JOIN Users u ON p.assigned_user_id = u.id WHERE is_duplicate != 1 AND NOT (outside_etj <=> 1)'
 	);
 
 	return res;
@@ -264,7 +264,7 @@ async function getAllProperties() {
 	];
 	var fieldsString = includeFields.join(', ');
 	var res = await query(
-		process.env.DB_NAME, //TODO: add env variable for db_name
+		process.env.DB_NAME, 
 		`SELECT ${fieldsString} FROM Properties WHERE is_duplicate != 1 AND NOT (outside_etj <=> 1)`
 	);
 	return res;
@@ -272,7 +272,7 @@ async function getAllProperties() {
 
 async function getAllPropertiesAllFields() {
 	var res = await query(
-		process.env.DB_NAME, //TODO: add env variable for db_name
+		process.env.DB_NAME, 
 		'SELECT * FROM Properties where is_duplicate != 1 AND NOT (outside_etj <=> 1)'
 	);
 	return res;
@@ -294,7 +294,7 @@ async function query(db, query) {
 async function getProperty(id) {
 	// TODO: properly handle errors
 	var res = await query(
-		process.env.DB_NAME, //TODO: add env variable for db_name
+		process.env.DB_NAME, 
 		`SELECT * from Properties WHERE id = ${id}`
 	);
 	return res;
@@ -315,7 +315,7 @@ async function getPropertyVerifications(id) {
 
 	// TODO: error handling
 	var res = await query(
-		process.env.DB_NAME, //TODO: add env variable for db_name
+		process.env.DB_NAME, 
 		`SELECT  * from PropertyVerifications LEFT JOIN Users ON updated_by_user_id = Users.id WHERE property_id = ${id} `
 	);
 	return reformat(res);
@@ -337,7 +337,7 @@ async function getAllPropertyVerifications() {
 		}
 	}
 	var res = await query(
-		process.env.DB_NAME, //TODO: add env variable for db_name
+		process.env.DB_NAME, 
 		`SELECT * from PropertyVerifications`
 	);
 	return reformat(res);
@@ -345,7 +345,7 @@ async function getAllPropertyVerifications() {
 
 async function getPropertyAssignedUser(id) {
 	var res = await query(
-		process.env.DB_NAME, //TODO: add env variable for db_name
+		process.env.DB_NAME, 
 		`SELECT assigned_user_id, Users.email from Properties INNER JOIN Users ON Properties.assigned_user_id = Users.id WHERE Properties.id = ${id}`
 	);
 	return res;
@@ -355,7 +355,7 @@ async function unassignUser(id) {
 	// TODO: need to error handle properly
 	if (id) {
 		var res = await query(
-			process.env.DB_NAME, //TODO: add env variable for db_name
+			process.env.DB_NAME, 
 			`UPDATE Properties SET assigned_user_id = NULL WHERE id = ${id}`
 		);
 		return true
@@ -365,7 +365,7 @@ async function unassignUser(id) {
 
 async function createProperty(name, address, city, state, zip) {
 	var result = await query(
-		process.env.DB_NAME, //TODO: add env variable for db_name
+		process.env.DB_NAME, 
 		`INSERT INTO Properties (property_name, address, city, state, zipcode) VALUES (${mysql.escape(name)}, ${mysql.escape(address)}, ${mysql.escape(city)}, ${mysql.escape(state)}, ${mysql.escape(zip)}) `
 	);
 	return result;
@@ -375,7 +375,7 @@ async function assign_property_to_user(propertyId, userId) {
 	// TODO: need to error handle properly
 	if (propertyId && userId) {
 		var res = await query(
-			process.env.DB_NAME, //TODO: add env variable for db_name
+			process.env.DB_NAME, 
 			`UPDATE Properties SET assigned_user_id = ${mysql.escape(userId)} WHERE id = ${propertyId}`
 		);
 		return res;
@@ -414,14 +414,14 @@ function closeDatabaseConnection(mysqlConnection) {
 async function getDatabaseConnection() {
 	return new Promise((resolve, reject) => {
 		try {
-			if (process.env.NODE_ENV == 'DEVELOPMENT') {
+			if (process.env.NODE_ENV == 'development') {
 				 var conn = mysql.createConnection({
 					user: process.env.DB_USER,
 					password: process.env.DB_PASSWORD,
 					host: process.env.DB_HOST,
 					database: process.env.DB_NAME
 				});
-			} else if (process.env.NODE_ENV == 'TEST'){
+			} else if (process.env.NODE_ENV == 'test'){
 				 var conn = mysql.createConnection({
 					user: process.env.DB_USER,
 					password: process.env.DB_PASSWORD,
