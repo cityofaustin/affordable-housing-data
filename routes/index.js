@@ -343,7 +343,9 @@ router.get('/property', async(req, res) => {
         var result = await dbHelper.getProperty(propertyId);
         var assignedUser = await dbHelper.getPropertyAssignedUser(propertyId);
         var verifications = await dbHelper.getPropertyVerifications(propertyId);
-        return res.status(200).send({success: true, data: result[0], fieldsMap: propertyFieldsMap, assignedUser: assignedUser, verifications: verifications});
+        var notes = await dbHelper.getPropertyNotes(propertyId);
+        //console.log(notes);
+        return res.status(200).send({success: true, data: result[0], fieldsMap: propertyFieldsMap, assignedUser: assignedUser, verifications: verifications, notes:notes});
     } catch (e) {
         logger.log('error', e, {origin: 'server'});
         return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
