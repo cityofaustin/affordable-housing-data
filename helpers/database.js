@@ -60,7 +60,7 @@ async function updateData(updateDataObj, propertyId, user_id) {
 				//console.log(note_text);
 				await query(
 					process.env.DB_NAME, 
-					`INSERT into NOTES (property_id,note_text,created_on,created_by)
+					`INSERT into notes (property_id,note_text,created_on,created_by)
 					VALUES (${mysql.escape(propertyId)}, ${mysql.escape(note_text)}, '${moment().format('YYYY-MM-DD HH:mm:ss')}', ${mysql.escape(user_id)})`
 				)
 			}
@@ -328,7 +328,7 @@ async function getPropertyNotes(id) {
 	// TODO: error handling
 	var res = await query(
 		process.env.DB_NAME, 
-		`SELECT  * from Notes LEFT JOIN Users ON created_by = Users.id 
+		`SELECT  * from notes LEFT JOIN Users ON created_by = Users.id 
 		WHERE property_id = ${id} and delete_flag=0
 		order by note_id desc`
 	);
