@@ -8,12 +8,13 @@
     "server": "node ./bin/www",
     "rebuild": "npm rebuild bcrypt --build-from-source && npm run server",
     "dev": "nodemon ./bin/www",
-    "bcrypt": "npm install bcrypt"
+    "bcrypt": "npm install bcrypt",
+    "client:build": "cd client && npm run build"
   },
+  "engines": {},
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt": "^3.0.5",
-    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
     "cookie-parser": "~1.4.3",
