@@ -135,13 +135,7 @@ router.get('/', function(req, res, next) {
     res.send('Welcome to Affordable housing Server');
 });
 
-router.get('/*', function(req, res, next) {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'), function(err) {
-        if (err) {
-            res.status(500).send(err)
-        }
-    })
-});
+
 
 router.post('/log_event', (req, res) => {
 
