@@ -1,5 +1,6 @@
 var express = require('express');
 var _ = require("underscore");
+var path = require('path');
 var router = express.Router();
 
 var logger = require('../helpers/logger').logger
@@ -131,7 +132,15 @@ function addVerificationFlags(properties, verifications) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send('Welcome to Affordable housing Server');
+    res.send('Welcome to Affordable housing Server');
+});
+
+router.get('/*', function(req, res, next) {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'), function(err) {
+        if (err) {
+            res.status(500).send(err)
+        }
+    })
 });
 
 router.post('/log_event', (req, res) => {
