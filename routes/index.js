@@ -209,6 +209,19 @@ router.post('/logout', async (req, res) => {
 })
 
 
+router.get('/registration', async (req, res) => {
+    try {
+        // console.log('session_id' & req.sessionID)
+        if (!await sessionHelper.isAuthorized(req.query.userEmail, req.sessionID)) {
+            return res.status(401).send({success: false, redirect: '/'})
+        }
+        return res.status(200).send({success: true, data: result});
+    } catch (e) {
+        logger.log('error', e, {origin: 'server'});
+        return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
+    }
+});
+
 router.get('/update_properties_list', async (req, res) => {
     try {
         // console.log('session_id' & req.sessionID)
