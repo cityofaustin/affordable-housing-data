@@ -1,5 +1,6 @@
 var express = require('express');
 var _ = require("underscore");
+var path = require('path');
 var router = express.Router();
 
 var logger = require('../helpers/logger').logger
@@ -131,8 +132,10 @@ function addVerificationFlags(properties, verifications) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send('Welcome to Affordable housing Server');
+    res.send('Welcome to Affordable housing Server');
 });
+
+
 
 router.post('/log_event', (req, res) => {
 
@@ -205,10 +208,22 @@ router.post('/logout', async (req, res) => {
     }
 })
 
+router.get('/checkuser', async (req, res) => {
+    try {
+        if (await sessionHelper.isAuthorized(req.query.userEmail, req.sessionID)) {
+            return res.status(200).send({success: true, redirect: null})
+        } else {
+            return res.status(200).send({success: false, redirect: '/'})
+        }
+        //return res.status(200).send({success: true});
+    } catch (e) {
+        logger.log('error', e, {origin: 'server'});
+        return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
+    }
+});
 
 router.get('/update_properties_list', async (req, res) => {
     try {
-        // console.log('session_id' & req.sessionID)
         if (!await sessionHelper.isAuthorized(req.query.userEmail, req.sessionID)) {
             return res.status(401).send({success: false, redirect: '/'})
         }
@@ -343,7 +358,9 @@ router.get('/property', async(req, res) => {
         var result = await dbHelper.getProperty(propertyId);
         var assignedUser = await dbHelper.getPropertyAssignedUser(propertyId);
         var verifications = await dbHelper.getPropertyVerifications(propertyId);
-        return res.status(200).send({success: true, data: result[0], fieldsMap: propertyFieldsMap, assignedUser: assignedUser, verifications: verifications});
+        var notes = await dbHelper.getPropertyNotes(propertyId);
+        //console.log(notes);
+        return res.status(200).send({success: true, data: result[0], fieldsMap: propertyFieldsMap, assignedUser: assignedUser, verifications: verifications, notes:notes});
     } catch (e) {
         logger.log('error', e, {origin: 'server'});
         return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});

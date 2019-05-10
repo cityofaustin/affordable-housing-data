@@ -54,6 +54,16 @@ async function updateData(updateDataObj, propertyId, user_id) {
 					`UPDATE Properties SET ${field} = ${mysql.escape(value)} WHERE id =${mysql.escape(propertyId)}`
 				);
 			}
+		} else if (field==='Note'){
+			if (!(value ==='')) {
+				var note_text = updateDataObj[field].value;
+				//console.log(note_text);
+				await query(
+					process.env.DB_NAME, 
+					`INSERT into notes (property_id,note_text,created_on,created_by)
+					VALUES (${mysql.escape(propertyId)}, ${mysql.escape(note_text)}, '${moment().format('YYYY-MM-DD HH:mm:ss')}', ${mysql.escape(user_id)})`
+				)
+			}
 		}
 	}
 }
@@ -300,6 +310,33 @@ async function getProperty(id) {
 	return res;
 }
 
+async function getPropertyNotes(id) {
+	function reformat(result) {
+		var obj = {};
+		if (res.length > 0) {
+			let ct = 1;
+			for (var r of res) {
+				obj[ct] = {note_id: r.note_id, created_on: r.created_on, created_by: r.email, note_text:r.note_text}
+				ct ++;
+			}
+			return obj;
+		} else {
+			return null; // TODO: change this to return empty object like in getAllPropertyVerifications
+		}
+	}
+
+	// TODO: error handling
+	var res = await query(
+		process.env.DB_NAME, 
+		`SELECT  * from notes LEFT JOIN Users ON created_by = Users.id 
+		WHERE property_id = ${id} and delete_flag=0
+		order by note_id desc`
+	);
+	//console.log('Notes'+ res);
+	return reformat(res);
+}
+
+
 async function getPropertyVerifications(id) {
 	function reformat(result) {
 		var obj = {};
@@ -472,3 +509,4 @@ module.exports.getAllPropertyVerifications = getAllPropertyVerifications;
 module.exports.getAllProperties = getAllProperties;
 module.exports.getAllPropertiesAllFields = getAllPropertiesAllFields;
 module.exports.createProperty = createProperty;
+module.exports.getPropertyNotes = getPropertyNotes;
