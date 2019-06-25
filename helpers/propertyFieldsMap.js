@@ -62,18 +62,22 @@ module.exports.fieldsMap = {
     },
     lat: {
         dataType: 'float',
-        group: null,
-        editable: false,
+        group: 'Basic Property Information',
+        groupOrderNum: 9,
+        //group: null,
+        editable: true,
         description: 'Latitude.',
-        active: false,
+        active: true,
         name: 'Latitude'
     },
     longitude: {
         dataType: 'float',
-        group: null,
-        editable: false,
+        group: 'Basic Property Information',
+        groupOrderNum: 10,
+        //group: null,
+        editable: true,
         description: 'Longitude',
-        active: false,
+        active: true,
         name: 'Longitude'
     },
     unit_type: {
