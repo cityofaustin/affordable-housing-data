@@ -19,6 +19,7 @@ users.post('/register', (req, res) => {
         email: req.body.email,
         org: req.body.org,
         passwd: req.body.passwd,
+        admin_flag: req.body.admin_flag,
         created: today
     }
 
@@ -29,6 +30,7 @@ users.post('/register', (req, res) => {
     }) 
         .then(user=> {
             if(!user){
+                // console.log(userData)
                 bcrypt.hash(req.body.passwd, saltrounds, (err, hash) => {
                     userData.passwd = hash
                     User.create(userData)
@@ -62,7 +64,8 @@ users.put('/profile/:id', (req, res) => {
         last_name: req.body.last_name,
         org: req.body.org,
         email: req.body.email,
-        passwd: req.body.passwd
+        passwd: req.body.passwd,
+        admin_flag: req.body.admin_flag
     }
     User.findByPk(id)
         .then (User => {
@@ -71,7 +74,7 @@ users.put('/profile/:id', (req, res) => {
             } else {
                 bcrypt.hash('passwd', 11, function(err, hash) {
                     userData.passwd = hash
-                    User.update( {first_name: req.body.first_name, last_name: req.body.last_name, org: req.body.org, email: req.body.email, passwd: userData.passwd},
+                    User.update( {first_name: req.body.first_name, last_name: req.body.last_name, org: req.body.org, email: req.body.email, passwd: userData.passwd, admin_flag: userData.admin_flag},
                         { where : {id: req.params.id}} )
                         .then( () => {
                             res.status(200).send("updated successfully a customer with id = " + id);
