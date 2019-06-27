@@ -23,3 +23,7 @@ CREATE TABLE IF NOT EXISTS notes (
     delete_flag TINYINT(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (note_id)
 ) 
+
+-- change datatype for coordinates columns. float won't work because it changes the value entered.
+ ALTER TABLE AffordableHousingDataHub.Properties MODIFY COLUMN lat decimal(10,8);
+ ALTER TABLE AffordableHousingDataHub.Properties MODIFY COLUMN longitude decimal(11,8);
