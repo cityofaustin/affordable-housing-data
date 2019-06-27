@@ -61,7 +61,7 @@ module.exports.fieldsMap = {
         tags: ['Basic Property Info']
     },
     lat: {
-        dataType: 'float',
+        dataType: 'decimal',
         group: 'Basic Property Information',
         groupOrderNum: 9,
         //group: null,
@@ -71,7 +71,7 @@ module.exports.fieldsMap = {
         name: 'Latitude'
     },
     longitude: {
-        dataType: 'float',
+        dataType: 'decimal',
         group: 'Basic Property Information',
         groupOrderNum: 10,
         //group: null,
