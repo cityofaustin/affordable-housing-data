@@ -10,6 +10,7 @@ module.exports = db.sequelize.define(
         email: {type: Sequelize.STRING, validate: {isEmail:true}},
         org: {type: Sequelize.STRING},
         passwd: {type: Sequelize.STRING, allowNull: false},
+        admin_flag: {type: Sequelize.INTEGER},
         session_id: {type: Sequelize.STRING},
     },
     {
