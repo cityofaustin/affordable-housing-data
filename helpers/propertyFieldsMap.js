@@ -795,8 +795,8 @@ module.exports.fieldsMap = {
         dataType: 'tinyint(1)',
         group: 'Funding Information',
         groupOrderNum: 1,
-        name: 'HACA',
-        description: 'HACA',
+        name: 'Housing Authority City Of Austin (HACA)',
+        description: 'Housing Authority City Of Austin',
         editable: true,
         active: true
     },
@@ -804,8 +804,8 @@ module.exports.fieldsMap = {
         dataType: 'tinyint(1)',
         group: 'Funding Information',
         groupOrderNum: 2,
-        name: 'HATC',
-        description: 'HATC',
+        name: 'Housing Authority of Travis County (HATC)',
+        description: 'Housing Authority of Travis County',
         editable: true,
         active: true
     },
@@ -813,8 +813,8 @@ module.exports.fieldsMap = {
         dataType: 'tinyint(1)',
         group: 'Funding Information',
         groupOrderNum: 3,
-        name: 'NHCD',
-        description: 'NHCD',
+        name: 'Neighborhood Housing and Community Development (NHCD)',
+        description: 'Neighborhood Housing and Community Development',
         editable: true,
         active: true
     },
@@ -822,8 +822,8 @@ module.exports.fieldsMap = {
         dataType: 'tinyint(1)',
         group: 'Funding Information',
         groupOrderNum: 4,
-        name: 'TDHCA',
-        description: 'TDHCA',
+        name: 'Texas Department of Housing & Community Affairs (TDHCA)',
+        description: 'Texas Department of Housing & Community Affairs',
         editable: true,
         active: true
     },
