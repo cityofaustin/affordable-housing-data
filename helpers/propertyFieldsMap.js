@@ -790,6 +790,43 @@ module.exports.fieldsMap = {
         name: 'Affordability Expiration of Property',
         description: 'Format: 2016-01-01 00:00:01'
     },
+    
+    funding_source_aahc: {
+        dataType: 'tinyint(1)',
+        group: 'Funding Information',
+        groupOrderNum: 1,
+        name: 'HACA',
+        description: 'HACA',
+        editable: true,
+        active: true
+    },
+    funding_source_hatc: {
+        dataType: 'tinyint(1)',
+        group: 'Funding Information',
+        groupOrderNum: 2,
+        name: 'HATC',
+        description: 'HATC',
+        editable: true,
+        active: true
+    },
+    funding_source_nhcd: {
+        dataType: 'tinyint(1)',
+        group: 'Funding Information',
+        groupOrderNum: 3,
+        name: 'NHCD',
+        description: 'NHCD',
+        editable: true,
+        active: true
+    },
+    funding_source_tdhca: {
+        dataType: 'tinyint(1)',
+        group: 'Funding Information',
+        groupOrderNum: 4,
+        name: 'TDHCA',
+        description: 'TDHCA',
+        editable: true,
+        active: true
+    },
     ahi_project_id: {
         dataType: 'int(11)',
         group: null,
