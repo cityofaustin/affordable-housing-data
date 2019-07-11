@@ -160,6 +160,27 @@ async function doesUserExist(email, pass) {
 	});
 }
 
+
+async function getAllUsers() {
+	try {
+		var conn = await getDatabaseConnection();
+		var res = await queryDatabase(
+			conn,
+			process.env.DB_NAME, 
+			`SELECT id, first_name, last_name, email, org, admin_flag FROM Users`
+		);
+		await closeDatabaseConnection(conn);
+
+		if (res.length < 1) {
+			throw new Error('getAllUsers() found no users');
+		}
+	} catch (e) {
+		throw new Error(thisFilename + ' => getAllUsers(), caught exception:\n' + e.stack);
+	}
+	return res;
+}
+
+
 async function getUser(email) {
 	try {
 		var conn = await getDatabaseConnection();
@@ -498,6 +519,7 @@ module.exports.getProperty = getProperty;
 module.exports.updateSessionId = updateSessionId;
 module.exports.deleteSessionId=deleteSessionId;
 module.exports.getUser = getUser;
+module.exports.getAllUsers = getAllUsers;
 module.exports.query = query;
 module.exports.updateData = updateData;
 module.exports.deleteData = deleteData;

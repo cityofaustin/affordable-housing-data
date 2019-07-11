@@ -392,4 +392,32 @@ router.post('/new_property', async(req, res) => {
     }
 });
 
+
+
+router.get('/users', async (req, res) => {
+    try {
+        var result = await dbHelper.getAllUsers();
+        return res.status(200).send({success: true, data: result});
+    } catch (e) {
+        return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
+    }
+});
+
+
+router.post('/update_user', async(req, res) => {
+    try {
+        if (!await sessionHelper.isAuthorized(req.query.userEmail, req.sessionID)) {
+            return res.status(401).send({success: false, redirect: '/'});
+        }
+        // TODO: throw error if there is no property id
+        var result = await dbHelper.getUser(req.query.userEmail);
+        var user = result[0];
+        //dbHelper.updateData(req.body.updatedData, req.body.propertyId, user.id);
+        return res.status(200).send({success: true});
+    } catch(e) {
+        logger.log('error', e, {origin: 'server'});
+        return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
+    }
+});
+
 module.exports = router;
