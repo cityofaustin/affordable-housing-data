@@ -790,6 +790,43 @@ module.exports.fieldsMap = {
         name: 'Affordability Expiration of Property',
         description: 'Format: 2016-01-01 00:00:01'
     },
+    
+    funding_source_aahc: {
+        dataType: 'tinyint(1)',
+        group: 'Funding Information',
+        groupOrderNum: 1,
+        name: 'Housing Authority City Of Austin (HACA)',
+        description: 'Housing Authority City Of Austin',
+        editable: true,
+        active: true
+    },
+    funding_source_hatc: {
+        dataType: 'tinyint(1)',
+        group: 'Funding Information',
+        groupOrderNum: 2,
+        name: 'Housing Authority of Travis County (HATC)',
+        description: 'Housing Authority of Travis County',
+        editable: true,
+        active: true
+    },
+    funding_source_nhcd: {
+        dataType: 'tinyint(1)',
+        group: 'Funding Information',
+        groupOrderNum: 3,
+        name: 'Neighborhood Housing and Community Development (NHCD)',
+        description: 'Neighborhood Housing and Community Development',
+        editable: true,
+        active: true
+    },
+    funding_source_tdhca: {
+        dataType: 'tinyint(1)',
+        group: 'Funding Information',
+        groupOrderNum: 4,
+        name: 'Texas Department of Housing and Community Affairs (TDHCA)',
+        description: 'Texas Department of Housing and Community Affairs',
+        editable: true,
+        active: true
+    },
     ahi_project_id: {
         dataType: 'int(11)',
         group: null,
