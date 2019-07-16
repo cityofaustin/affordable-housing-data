@@ -822,8 +822,8 @@ module.exports.fieldsMap = {
         dataType: 'tinyint(1)',
         group: 'Funding Information',
         groupOrderNum: 4,
-        name: 'Texas Department of Housing & Community Affairs (TDHCA)',
-        description: 'Texas Department of Housing & Community Affairs',
+        name: 'Texas Department of Housing and Community Affairs (TDHCA)',
+        description: 'Texas Department of Housing and Community Affairs',
         editable: true,
         active: true
     },
