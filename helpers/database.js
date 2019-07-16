@@ -200,6 +200,34 @@ async function getUser(email) {
 	return res;
 }
 
+
+async function getUserbyID(id) {
+	
+	var res = await query(
+		process.env.DB_NAME, 
+		`SELECT id, first_name, last_name, email, org, admin_flag  from Users WHERE id = ${id}`
+	);
+	console.log(res);
+	return res;
+	/*
+	try {
+		var conn = await getDatabaseConnection();
+		var res = await queryDatabase(
+			conn,
+			process.env.DB_NAME, 
+			`SELECT * FROM Users WHERE id = ${mysql.escape(id)}`
+		);
+		await closeDatabaseConnection(conn);
+			console.log(res);
+		if (res.length > 1) {
+			throw new Error('getUser() found multiple users');
+		}
+	} catch (e) {
+		throw new Error(thisFilename + ' => getUser(), caught exception:\n' + e.stack);
+	}
+	return res;*/
+}
+
 async function createUser(firstName, lastName, org, email, passwd) {
 	return new Promise(async (resolve, reject) => {
 		try {
@@ -519,6 +547,7 @@ module.exports.getProperty = getProperty;
 module.exports.updateSessionId = updateSessionId;
 module.exports.deleteSessionId=deleteSessionId;
 module.exports.getUser = getUser;
+module.exports.getUserbyID = getUserbyID;
 module.exports.getAllUsers = getAllUsers;
 module.exports.query = query;
 module.exports.updateData = updateData;

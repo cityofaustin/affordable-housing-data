@@ -404,16 +404,18 @@ router.get('/users', async (req, res) => {
 });
 
 
-router.post('/update_user', async(req, res) => {
-    try {
+router.get('/get_user_byID', async(req, res) => {console.log(req.query);
+    try {/*
         if (!await sessionHelper.isAuthorized(req.query.userEmail, req.sessionID)) {
             return res.status(401).send({success: false, redirect: '/'});
-        }
-        // TODO: throw error if there is no property id
-        var result = await dbHelper.getUser(req.query.userEmail);
+        }*/
+        var userId = req.query.userId;
+        // TODO: throw error if there is no user id
+        var result = await dbHelper.getUserbyID(userId);
+        //var result = await dbHelper.getUser(req.query.userEmail);
         var user = result[0];
         //dbHelper.updateData(req.body.updatedData, req.body.propertyId, user.id);
-        return res.status(200).send({success: true});
+        return res.status(200).send({success: true, data: user});
     } catch(e) {
         logger.log('error', e, {origin: 'server'});
         return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
