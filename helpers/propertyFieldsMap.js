@@ -791,7 +791,7 @@ module.exports.fieldsMap = {
         description: 'Format: 2016-01-01 00:00:01'
     },
     
-    funding_source_aahc: {
+    funding_source_haca: {
         dataType: 'tinyint(1)',
         group: 'Funding Information',
         groupOrderNum: 1,
