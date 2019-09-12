@@ -131,8 +131,7 @@ module.exports.fieldsMap = {
         editable: true,
         description: 'Number of income-restricted Studio',
         active: true,
-        name: 'Number of income-restricted Studio',
-        tags: ['Basic Property Info']
+        name: 'Number of income-restricted Studio'
     },
     num_ir_1_bed_units: {
         dataType: 'int(11)',
@@ -141,8 +140,7 @@ module.exports.fieldsMap = {
         editable: true,
         description: 'Number of income-restricted 1-Bedroom units',
         active: true,
-        name: 'Number of income-restricted 1-Bedroom units',
-        tags: ['Basic Property Info']
+        name: 'Number of income-restricted 1-Bedroom units'
     },
     num_ir_2_bed_units: {
         dataType: 'int(11)',
@@ -151,8 +149,7 @@ module.exports.fieldsMap = {
         editable: true,
         description: 'Number of income-restricted 2-Bedroom units',
         active: true,
-        name: 'Number of income-restricted 2-Bedroom units',
-        tags: ['Basic Property Info']
+        name: 'Number of income-restricted 2-Bedroom units'
     },
     
     num_ir_3_bed_units: {
@@ -162,8 +159,7 @@ module.exports.fieldsMap = {
         editable: true,
         description: 'Number of income-restricted 3-Bedroom units',
         active: true,
-        name: 'Number of income-restricted 3-Bedroom units',
-        tags: ['Basic Property Info']
+        name: 'Number of income-restricted 3-Bedroom units'
     },
     
     num_ir_4_bed_units: {
@@ -173,8 +169,7 @@ module.exports.fieldsMap = {
         editable: true,
         description: 'Number of income-restricted 4-Bedroom units',
         active: true,
-        name: 'Number of income-restricted 4-Bedroom units',
-        tags: ['Basic Property Info']
+        name: 'Number of income-restricted 4-Bedroom units'
     },
     num_ir_5_bed_units: {
         dataType: 'int(11)',
@@ -183,8 +178,7 @@ module.exports.fieldsMap = {
         editable: true,
         description: 'Number of income-restricted 5-Bedroom units',
         active: true,
-        name: 'Number of income-restricted 5-Bedroom units',
-        tags: ['Basic Property Info']
+        name: 'Number of income-restricted 5-Bedroom units'
     },
     phone: {
         dataType: 'varchar(255)',
@@ -462,18 +456,18 @@ module.exports.fieldsMap = {
         group: 'Affordability Information',
         groupOrderNum: 6,
         editable: true,
-        description: 'Total number of units that accept section 8 vouchers. This includes vacant and occupied units.',
+        description: 'Total number of units that accept Housing Choice vouchers. This includes vacant and occupied units.',
         active: false,
-        name: 'Total Section 8 Units'
+        name: 'Total Housing Choice Units'
     },
     accepts_section_8: {
         dataType: 'tinyint(1)',
         group: 'Affordability Information',
         groupOrderNum: 5,
         editable: true,
-        description: 'Does this property accept section 8 vouchers?',
+        description: 'Does this property accept Housing Choice vouchers?',
         active: true,
-        name: 'Does this property accept section 8 vouchers?',
+        name: 'Does this property accept Housing Choice vouchers?',
         tags: ['Tenant Criteria Info']
     },
     has_available_section_8: {
@@ -481,7 +475,7 @@ module.exports.fieldsMap = {
         group: 'Affordability Information',
         groupOrderNum: 7,
         editable: true,
-        description: 'Does this property have any AVAILABLE units that would accept section 8 vouchers?',
+        description: 'Does this property have any AVAILABLE units that would accept Housing Choice vouchers?',
         active: false
     },
     has_available_section_8_updated_at: {
@@ -617,9 +611,9 @@ module.exports.fieldsMap = {
         group: 'Affordability Information',
         groupOrderNum: 23,
         editable: true,
-        description: 'Does this property have any affordable units available today? This includes either income restricted units, section 8 properties, or public housing.',
+        description: 'Does this property have any affordable units available today? This includes either income restricted units, Housing Choice properties, or public housing.',
         active: true,
-        name: 'Does this property have any affordable units (i.e. income restricted, section 8, etc.) available today?',
+        name: 'Does this property have any affordable units (i.e. income restricted, Housing Choice, etc.) available today?',
         tags: ['Tenant Criteria Info']
     },
     // num_units_mfi_90: {
