@@ -124,6 +124,68 @@ module.exports.fieldsMap = {
         name: 'Council District',
         tags: ['Basic Property Info']
     },
+    num_ir_0_bed_units: {
+        dataType: 'int(11)',
+        group: 'Basic Property Information',
+        groupOrderNum: 15,
+        editable: true,
+        description: 'Number of income-restricted Studio',
+        active: true,
+        name: 'Number of income-restricted Studio',
+        tags: ['Basic Property Info']
+    },
+    num_ir_1_bed_units: {
+        dataType: 'int(11)',
+        group: 'Basic Property Information',
+        groupOrderNum: 16,
+        editable: true,
+        description: 'Number of income-restricted 1-Bedroom units',
+        active: true,
+        name: 'Number of income-restricted 1-Bedroom units',
+        tags: ['Basic Property Info']
+    },
+    num_ir_2_bed_units: {
+        dataType: 'int(11)',
+        group: 'Basic Property Information',
+        groupOrderNum: 16,
+        editable: true,
+        description: 'Number of income-restricted 2-Bedroom units',
+        active: true,
+        name: 'Number of income-restricted 2-Bedroom units',
+        tags: ['Basic Property Info']
+    },
+    
+    num_ir_3_bed_units: {
+        dataType: 'int(11)',
+        group: 'Basic Property Information',
+        groupOrderNum: 17,
+        editable: true,
+        description: 'Number of income-restricted 3-Bedroom units',
+        active: true,
+        name: 'Number of income-restricted 3-Bedroom units',
+        tags: ['Basic Property Info']
+    },
+    
+    num_ir_4_bed_units: {
+        dataType: 'int(11)',
+        group: 'Basic Property Information',
+        groupOrderNum: 18,
+        editable: true,
+        description: 'Number of income-restricted 4-Bedroom units',
+        active: true,
+        name: 'Number of income-restricted 4-Bedroom units',
+        tags: ['Basic Property Info']
+    },
+    num_ir_5_bed_units: {
+        dataType: 'int(11)',
+        group: 'Basic Property Information',
+        groupOrderNum: 19,
+        editable: true,
+        description: 'Number of income-restricted 5-Bedroom units',
+        active: true,
+        name: 'Number of income-restricted 5-Bedroom units',
+        tags: ['Basic Property Info']
+    },
     phone: {
         dataType: 'varchar(255)',
         group: 'Contact Information',
