@@ -248,6 +248,7 @@ async function getAllProperties() {
 		'num_units_mfi_40',
 		'num_units_mfi_50',
 		'num_units_mfi_60',
+		'num_units_mfi_65',
 		'num_units_mfi_70',
 		'num_units_mfi_80',
 		'num_units_mfi_90',
