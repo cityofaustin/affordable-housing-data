@@ -253,7 +253,7 @@ async function getUpdatePropertiesList() {
 
 	var res = query(
 		process.env.DB_NAME, 
-		'SELECT p.id, p.property_name, funding_source_aahc, funding_source_hatc, funding_source_tdhca, funding_source_nhcd, data_source_ahi, data_source_tdhca, data_source_atc_guide,  address, phone, p.email as email, website, city, total_income_restricted_units, total_section_8_units, zipcode, u.email as assigned_user_email FROM Properties p LEFT JOIN Users u ON p.assigned_user_id = u.id WHERE is_duplicate != 1 AND NOT (outside_etj <=> 1)'
+		'SELECT p.id, p.property_name, funding_source_haca, funding_source_hatc, funding_source_tdhca, funding_source_nhcd, data_source_ahi, data_source_tdhca, data_source_atc_guide,  address, phone, p.email as email, website, city, total_income_restricted_units, total_section_8_units, zipcode, u.email as assigned_user_email FROM Properties p LEFT JOIN Users u ON p.assigned_user_id = u.id WHERE is_duplicate != 1 AND NOT (outside_etj <=> 1)'
 	);
 
 	return res;
@@ -297,6 +297,7 @@ async function getAllProperties() {
 		'num_units_mfi_40',
 		'num_units_mfi_50',
 		'num_units_mfi_60',
+		'num_units_mfi_65',
 		'num_units_mfi_70',
 		'num_units_mfi_80',
 		'num_units_mfi_90',
