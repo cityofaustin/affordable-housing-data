@@ -21,7 +21,7 @@ async function updateData(updateDataObj, propertyId, user_id) {
 			var value = updateDataObj[field].value;
 			var verify = updateDataObj[field].verify;
 
-			console.log(verify);
+			//console.log(verify);
 
 			// update PropertyVerifications
 			if (!(verify == undefined)) {
@@ -87,7 +87,7 @@ async function updateSessionId(userId, sessionId) {
 			var conn = await getDatabaseConnection();
 			var sql = `UPDATE Users SET session_id =${mysql.escape(sessionId)} WHERE id=${mysql.escape(userId)}`;
 			await queryDatabase(conn, process.env.DB_NAME, sql); 
-			console.log('session id UPDATE')
+			//console.log('session id UPDATE')
 		} catch(e) {
 			error = new Error(thisFilename + ' => updateSessionID(), caught exception:\n' + e.stack);
 		} finally {
@@ -109,7 +109,7 @@ async function deleteSessionId(userId, sessionId) {
 			var conn = await getDatabaseConnection();
 			var sql = `UPDATE Users SET session_id =NULL WHERE id=${mysql.escape(userId)} and session_id =${mysql.escape(sessionId)} `;
 			await queryDatabase(conn, process.env.DB_NAME, sql);
-			console.log('delete sessionID')
+			//console.log('delete sessionID')
 		} catch(e) {
 			error = new Error(thisFilename + ' => deleteSessionID(), caught exception:\n' + e.stack);
 		} finally {
@@ -207,7 +207,7 @@ async function getUserbyID(id) {
 		process.env.DB_NAME, 
 		`SELECT id, first_name, last_name, email, org, admin_flag  from Users WHERE id = ${id}`
 	);
-	console.log(res);
+	//console.log(res);
 	return res;
 	/*
 	try {
@@ -246,6 +246,30 @@ async function createUser(firstName, lastName, org, email, passwd) {
 
 		return resolve(results)
 	});
+}
+
+
+async function updateUser(userObj, user_id) {
+	//console.log(userObj);
+	if (user_id) {
+		for (var field in userObj) {
+			var value = userObj[field].value;
+			//console.log('Field: '+ field + ' Value: ' + value);
+			if (field==='passwd') {
+				var passwdHash = bcrypt.hashSync(value, 11);
+				var res = await query(
+					process.env.DB_NAME, 
+					`update users set ${field} = ${mysql.escape(passwdHash)} WHERE id = ${user_id}`
+				)
+			} else {
+			var res = await query(
+				process.env.DB_NAME, 
+				`update users set ${field} = ${mysql.escape(value)} WHERE id = ${user_id}`
+			)
+			};
+		}
+		return res;
+	} return false;
 }
 
 async function getUpdatePropertiesList() {
@@ -541,6 +565,7 @@ async function getDatabaseConnection() {
 module.exports.getDatabaseConnection = getDatabaseConnection;
 module.exports.closeDatabaseConnection = closeDatabaseConnection;
 module.exports.createUser = createUser;
+module.exports.updateUser = updateUser;
 module.exports.doesUserExist = doesUserExist;
 module.exports.queryDatabase = queryDatabase;
 module.exports.getUpdatePropertiesList = getUpdatePropertiesList;
