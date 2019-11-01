@@ -420,7 +420,7 @@ router.get('/users', async (req, res) => {
 });
 
 
-router.get('/get_user_byID', async(req, res) => {console.log(req.query);
+router.get('/get_user_byID', async(req, res) => {//console.log(req.query);
     try {/*
         if (!await sessionHelper.isAuthorized(req.query.userEmail, req.sessionID)) {
             return res.status(401).send({success: false, redirect: '/'});

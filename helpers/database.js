@@ -255,7 +255,7 @@ async function updateUser(userObj, user_id) {
 		for (var field in userObj) {
 			var value = userObj[field].value;
 			//console.log('Field: '+ field + ' Value: ' + value);
-			if (field==='passwd') {
+			if (field==='passwd' && value !== null) {
 				var passwdHash = bcrypt.hashSync(value, 11);
 				var res = await query(
 					process.env.DB_NAME, 
