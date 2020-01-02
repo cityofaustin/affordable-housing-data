@@ -255,13 +255,13 @@ async function updateUser(userObj, user_id) {
 		for (var field in userObj) {
 			var value = userObj[field].value;
 			//console.log('Field: '+ field + ' Value: ' + value);
-			if (field==='passwd' && value !== null) {
+			if (field==='passwd' && value !== undefined) {
 				var passwdHash = bcrypt.hashSync(value, 11);
 				var res = await query(
 					process.env.DB_NAME, 
 					`update users set ${field} = ${mysql.escape(passwdHash)} WHERE id = ${user_id}`
 				)
-			} else {
+			} else { console.log(field + value);
 			var res = await query(
 				process.env.DB_NAME, 
 				`update users set ${field} = ${mysql.escape(value)} WHERE id = ${user_id}`
