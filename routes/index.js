@@ -195,12 +195,8 @@ router.post('/logout', async (req, res) => {
         var user = result[0];
         console.log('Logout this user ' + user.last_name)
         if (user) {
-            await dbHelper.deleteSessionId(user.id, req.sessionID)
-
-            console.log(user)
-
+            await dbHelper.deleteSessionId(user.id, req.sessionID);
             res.status(200).send({success: true})
-            // console.log(res);
         }
     } catch(e) {
         logger.log('error', e, {origin: 'server'});

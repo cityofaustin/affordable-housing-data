@@ -107,7 +107,7 @@ async function deleteSessionId(userId, sessionId) {
 		var error = null;
 		try {
 			var conn = await getDatabaseConnection();
-			var sql = `UPDATE Users SET session_id =NULL WHERE id=${mysql.escape(userId)} and session_id =${mysql.escape(sessionId)} `;
+			var sql = `UPDATE Users SET session_id =NULL WHERE id=${mysql.escape(userId)} and session_id =${mysql.escape(sessionId)}`;
 			await queryDatabase(conn, process.env.DB_NAME, sql);
 			//console.log('delete sessionID')
 		} catch(e) {
