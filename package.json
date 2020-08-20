@@ -14,7 +14,7 @@
   "engines": {},
   "dependencies": {
     "axios": "^0.18.1",
-    "bcrypt": "^3.0.5",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.1",
     "cookie-parser": "~1.4.3",
