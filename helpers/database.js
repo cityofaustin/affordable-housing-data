@@ -242,6 +242,7 @@ async function getAllProperties() {
 		'total_units',
 		'total_psh_units',
 		'total_income_restricted_units',
+		'total_accessible_ir_units',
 		'accepts_section_8',
 		'total_public_housing_units',
 		'num_units_mfi_30',
