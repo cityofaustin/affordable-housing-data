@@ -28,4 +28,5 @@ CREATE TABLE IF NOT EXISTS notes (
  ALTER TABLE AffordableHousingDataHub.Properties MODIFY COLUMN lat decimal(10,8);
  ALTER TABLE AffordableHousingDataHub.Properties MODIFY COLUMN longitude decimal(11,8);
 
- ALTER TABLE properties RENAME COLUMN funding_source_haca TO funding_source_haca;
+ -- ALTER TABLE properties RENAME COLUMN funding_source_haca TO funding_source_haca;
+ ALTER TABLE AffordableHousingDataHub.Properties CHANGE `funding_source_aahc` `funding_source_haca` TINYINT(1);
