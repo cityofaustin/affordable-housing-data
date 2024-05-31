@@ -183,7 +183,7 @@ router.post('/login', async (req, res) => {
             res.status(200).send({success: false});
         }
     } catch(e) {
-        logger.log('error', e, {origin: 'server'});
+        logger.log('error', "186: " + e.toString(), {origin: 'server'});
         res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
     }
 });
@@ -200,7 +200,7 @@ router.post('/logout', async (req, res) => {
             // console.log(res);
         }
     } catch(e) {
-        logger.log('error', e, {origin: 'server'});
+        logger.log('error', "203: " + e.toString(), {origin: 'server'});
         res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
     }
 })
@@ -214,7 +214,7 @@ router.get('/checkuser', async (req, res) => {
         }
         //return res.status(200).send({success: true});
     } catch (e) {
-        logger.log('error', e, {origin: 'server'});
+        logger.log('error', "217: " + e.toString(), {origin: 'server'});
         return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
     }
 });
@@ -230,7 +230,7 @@ router.get('/update_properties_list', async (req, res) => {
         result = addVerificationFlags(result, verifications);
         return res.status(200).send({success: true, data: result});
     } catch (e) {
-        logger.log('error', e, {origin: 'server'});
+        logger.log('error', "233: " + e.toString(), {origin: 'server'});
         return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
     }
 });
@@ -246,7 +246,7 @@ router.post('/delete_property', async(req, res) => {
         dbHelper.deleteData(req.body.propertyId, user.id);
         return res.status(200).send({success: true});
     } catch(e) {
-        logger.log('error', e, {origin: 'server'});
+        logger.log('error', "249: " + e.toString(), {origin: 'server'});
         return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
     }
 });
@@ -296,7 +296,7 @@ router.get('/get_assigned_user', async(req, res) => {
         var assignedUser = await dbHelper.getPropertyAssignedUser(propertyId);
         return res.status(200).send({success: true, data: assignedUser});
     } catch (e) {
-        logger.log('error', e, {origin: 'server'});
+        logger.log('error', "299: " + e.toString(), {origin: 'server'});
         return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
     }
 });
@@ -310,7 +310,7 @@ router.get('/unassign_user', async(req, res) => {
         await dbHelper.unassignUser(propertyId);
         return res.status(200).send({success: true});
     } catch (e) {
-        logger.log('error', e, {origin: 'server'});
+        logger.log('error', "313: " + e.toString(), {origin: 'server'});
         return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
     }
 });
@@ -325,7 +325,7 @@ router.get('/assign_property_to_user', async(req, res) => {
         await dbHelper.assign_property_to_user(propertyId, result[0].id);
         return res.status(200).send({success: true, assignedTo: req.query.userEmail});
     } catch (e) {
-        logger.log('error', e, {origin: 'server'});
+        logger.log('error', "328: " + e.toString(), {origin: 'server'});
         return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
     }
 });
@@ -341,7 +341,7 @@ router.post('/update_property', async(req, res) => {
         dbHelper.updateData(req.body.updatedData, req.body.propertyId, user.id);
         return res.status(200).send({success: true});
     } catch(e) {
-        logger.log('error', e, {origin: 'server'});
+        logger.log('error', "344: " + e.toString(), {origin: 'server'});
         return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
     }
 });
@@ -359,7 +359,7 @@ router.get('/property', async(req, res) => {
         //console.log(notes);
         return res.status(200).send({success: true, data: result[0], fieldsMap: propertyFieldsMap, assignedUser: assignedUser, verifications: verifications, notes:notes});
     } catch (e) {
-        logger.log('error', e, {origin: 'server'});
+        logger.log('error', "362: " + e.toString(), {origin: 'server'});
         return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
     }
 });
@@ -384,7 +384,7 @@ router.post('/new_property', async(req, res) => {
             return res.status(500).send({success: false, message: 'All fields are required'});
         }
     } catch (e) {
-        logger.log('error', e, {origin: 'server'});
+        logger.log('error', "387: " + e.toString(), {origin: 'server'});
         return res.status(500).send({success: false, error: e.stack.toString(), serverSideError: true});
     }
 });
