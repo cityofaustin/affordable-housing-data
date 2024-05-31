@@ -1,38 +1,36 @@
 {
   "name": "affordable-housing-project",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "npm rebuild bcrypt --build-from-source && npm run server",
+    "start": "npm run server",
     "server": "node ./bin/www",
-    "rebuild": "npm rebuild bcrypt --build-from-source && npm run server",
     "dev": "nodemon ./bin/www",
-    "bcrypt": "npm install bcrypt",
     "client:build": "cd client && npm run build"
   },
   "engines": {},
   "dependencies": {
-    "axios": "^0.21.2",
-    "bcrypt": "^5.0.0",
+    "axios": "^1.7.2",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
-    "concurrently": "^6.3.0",
-    "cookie-parser": "^1.4.5",
+    "concurrently": "^8.2.2",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-    "debug": "^4.3.1",
-    "dotenv": "^8.2.0",
+    "debug": "^4.3.4",
+    "dotenv": "^16.4.5",
     "express": "^4.17.1",
-    "express-mysql-session": "^2.1.5",
-    "express-session": "^1.17.1",
+    "express-mysql-session": "^3.0.2",
+    "express-session": "^1.18.0",
     "moment": "^2.29.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "mysql2": "^2.2.5",
+    "mysql2": "^3.9.8",
     "sequelize": "^6.3.5",
-    "underscore": "^1.12.1",
-    "winston": "^3.3.3"
+    "underscore": "^1.13.6",
+    "winston": "^3.13.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "nodemon": "^3.1.1"
   }
 }
