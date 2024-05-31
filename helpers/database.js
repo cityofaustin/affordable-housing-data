@@ -3,7 +3,8 @@ require('dotenv').config();
 
 const fs = require('fs');
 const mysql = require('mysql');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs')
+
 const fieldsMap = require('./propertyFieldsMap.js').fieldsMap;
 const thisFilename = 'database.js';
 const _ = require('underscore');
